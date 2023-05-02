@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fqh.backend.dao.CodeInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.fqh.backend.entity.CodeInfo">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="questionNo" column="question_no" jdbcType="INTEGER"/>
+            <result property="questionUrl" column="question_url" jdbcType="VARCHAR"/>
+            <result property="codeLang" column="code_lang" jdbcType="TINYINT"/>
+            <result property="codeInfo" column="code_info" jdbcType="VARCHAR"/>
+            <result property="uploadTime" column="upload_time" jdbcType="DATE"/>
+            <result property="updateTime" column="update_time" jdbcType="DATE"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,question_no,question_url,
+        code_lang,code_info,upload_time,
+        update_time,is_deleted
+    </sql>
+</mapper>
