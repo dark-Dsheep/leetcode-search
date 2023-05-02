@@ -24,6 +24,11 @@ public class CodeInfo implements Serializable {
      */
     @TableField(value = "question_no")
     private Integer questionNo;
+    /**
+     * 题目名称
+     */
+    @TableField(value = "question_name")
+    private String questionName;
 
     /**
      * 题目链接
