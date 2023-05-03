@@ -33,10 +33,9 @@ public class CodeInfoServiceImpl extends ServiceImpl<CodeInfoMapper, CodeInfo>
         this.codeInfoMapper = codeInfoMapper;
     }
 
+    //TODO cache result
     @Override
     public String queryCodeInfo(CodeInfoQueryVO queryVO) {
-//        var questionNo = queryVO.getQuestionNo();
-//        var questionName = queryVO.getQuestionName();
         var keyword = queryVO.getKeyword();
         var wrapper = new LambdaQueryWrapper<CodeInfo>();
         if (StringUtils.isNotBlank(keyword)) {

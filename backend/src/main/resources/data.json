@@ -1,0 +1,26 @@
+[
+  {
+    "questionNo": 50,
+    "questionName": "Pow(x, n)",
+    "questionLang": 0,
+    "code": "class Solution {\n    public double myPow(double x, int n) {\n        double ans = qpow(x, n);\n        return ans;\n    }\n\n    // 求 m^k mod p 时间复杂度 O(logk)\n    double qpow(double m, long k) {\n        if (k < 0) {\n            k = -k;\n            m = 1 / m;\n        }\n        double ans = 1, t = m;\n        while (k > 0) {\n            if ((k & 1) == 1) {\n                ans = ans * t;\n            }\n            t = t * t;\n            k >>= 1;\n        }\n        return ans;\n    }\n}"
+  },
+  {
+    "questionNo": 50,
+    "questionName": "Pow(x, n)",
+    "questionLang": 1,
+    "code": "func myPow(x float64, n int) float64 {\n\treturn fastPow(x, n)\n}\n\nfunc fastPow(m float64, k int) float64 {\n\tif k < 0 {\n\t\tk = -k\n\t\tm = 1 / m\n\t}\n\tans, t := 1.0, m\n\tfor k > 0 {\n\t\tif (k & 1) == 1 {\n\t\t\tans = ans * t\n\t\t}\n\t\tt = t * t\n\t\tk >>= 1\n\t}\n\treturn ans\n}"
+  },
+  {
+    "questionNo": 53,
+    "questionName": "最大子数组和",
+    "questionLang": 0,
+    "code": "class Solution {\n    public int maxSubArray(int[] nums) {\n        int max = nums[0];\n        for (int i = 1; i < nums.length; i++) {\n            if (nums[i] + nums[i-1] > nums[i]) {\n                nums[i] += nums[i-1];\n            }\n            max = Math.max(max, nums[i]);\n        }\n        return max;\n    }\n}"
+  },
+  {
+    "questionNo": 53,
+    "questionName": "最大子数组和",
+    "questionLang": 1,
+    "code": "func maxSubArray(nums []int) (ans int) {\n    ans = nums[0]\n\tfor i := 1; i < len(nums); i++ {\n\t\tif nums[i] + nums[i-1] > nums[i] {\n\t\t\tnums[i] += nums[i-1]\n\t\t}\n\t\tans = max(ans, nums[i])\n\t}\n\treturn ans\n}\n\nfunc max(a, b int) int{\n\tif a > b {\n\t\treturn a\n\t}\n\treturn b\n}"
+  }
+]
