@@ -31,7 +31,7 @@
 <!--          </div>-->
         </div>
         <!-- 代码显示 -->
-        <v-md-preview v-if="codeInfoMd !== ''" :text="codeInfoMd" >
+        <v-md-preview v-if="codeInfoMd !== ''" :text="codeInfoMd">
         </v-md-preview>
       </div>
 <!--      style="height:300px;overflow-y:auto"-->

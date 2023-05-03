@@ -9,7 +9,7 @@ module.exports = {
           'prismjs',
         {
           // languages: ['java','prism-go','json']
-            languages: ['java', 'go', 'text']
+            languages: ['java', 'go']
         }
       ]
   ]

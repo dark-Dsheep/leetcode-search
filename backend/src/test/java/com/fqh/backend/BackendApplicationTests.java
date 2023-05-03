@@ -22,30 +22,22 @@ class BackendApplicationTests {
     @Test
     void dataLoad() {
         CodeInfo codeInfo = new CodeInfo();
-        codeInfo.setQuestionNo(5);
-        codeInfo.setQuestionName("最长回文子串");
-        codeInfo.setQuestionUrl("https://leetcode.cn/problems/longest-palindromic-substring/");
+        codeInfo.setQuestionNo(49);
+        codeInfo.setQuestionName("字母异位词分组");
+        codeInfo.setQuestionUrl("https://leetcode.cn/problems/group-anagrams/");
         codeInfo.setCodeLang(1);
-        codeInfo.setCode("func longestPalindrome(s string) string {\n" +
-                "    n, maxLen := len(s), 1\n" +
-                "\tans := s\n" +
-                "\tfor i := 1; i < n; i++ {\n" +
-                "\t\tx := s[i]\n" +
-                "\t\tl, r := i, i\n" +
-                "\t\tfor l >= 0 && s[l] == x {\n" +
-                "\t\t\tl--\n" +
-                "\t\t}\n" +
-                "\t\tfor r < n && s[r] == x {\n" +
-                "\t\t\tr++\n" +
-                "\t\t}\n" +
-                "\t\tfor l >= 0 && r < n && s[l] == s[r] {\n" +
-                "\t\t\tl--\n" +
-                "\t\t\tr++\n" +
-                "\t\t}\n" +
-                "\t\tif r-l+1 > maxLen {\n" +
-                "\t\t\tans = s[l+1 : r]\n" +
-                "\t\t\tmaxLen = r - l + 1\n" +
-                "\t\t}\n" +
+        codeInfo.setCode("func groupAnagrams(strs []string) (ans [][]string) {\n" +
+                "    mp := make(map[string][]string)\n" +
+                "\tfor _, str := range strs {\n" +
+                "\t\tcs := []byte(str)\n" +
+                "\t\tsort.Slice(cs, func(i, j int) bool {\n" +
+                "\t\t\treturn cs[i] < cs[j]\n" +
+                "\t\t})\n" +
+                "\t\ts := string(cs)\n" +
+                "\t\tmp[s] = append(mp[s], str)\n" +
+                "\t}\n" +
+                "\tfor _, v := range mp {\n" +
+                "\t\tans = append(ans, v)\n" +
                 "\t}\n" +
                 "\treturn ans\n" +
                 "}");
