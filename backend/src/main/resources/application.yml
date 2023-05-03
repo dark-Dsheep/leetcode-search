@@ -8,8 +8,8 @@ spring:
     name: leetcode-search
 
   datasource:
-    url: jdbc:mysql://192.168.56.10:3306/my_project
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.56.10:3306/my_project?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
 

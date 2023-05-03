@@ -1,5 +1,6 @@
 package com.fqh.backend.common;
 
+import com.fqh.backend.exception.BusinessException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,4 +35,13 @@ public class CommonResult<T> {
     public static <T> CommonResult<T> fail() {
         return new CommonResult<T>(FAILED.getCode(), FAILED.getMessage());
     }
+
+    public static <T> CommonResult<T> fail(BusinessException e) {
+        return new CommonResult<>(e.getErrorCode(), e.getMessage());
+    }
+
+    public static <T> CommonResult<T> fail(BusinessException e, T data) {
+        return new CommonResult<>(e.getErrorCode(), e.getMessage(), data);
+    }
+
 }

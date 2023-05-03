@@ -17,7 +17,7 @@ public interface CodeInfoService extends IService<CodeInfo> {
     /**
      * 查询代码信息
      * @param queryVO 查询条件
-     * @return List<CodeInfoVO>
+     * @return String
      */
-    List<CodeInfoVO> queryCodeInfo(CodeInfoQueryVO queryVO);
+    String queryCodeInfo(CodeInfoQueryVO queryVO);
 }

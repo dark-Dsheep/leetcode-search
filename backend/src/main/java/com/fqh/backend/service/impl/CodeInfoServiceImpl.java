@@ -7,15 +7,14 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fqh.backend.dao.CodeInfoMapper;
 import com.fqh.backend.entity.CodeInfo;
+import com.fqh.backend.exception.BusinessException;
 import com.fqh.backend.service.CodeInfoService;
 import com.fqh.backend.vo.CodeInfoQueryVO;
-import com.fqh.backend.vo.CodeInfoVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static com.fqh.backend.enums.ResultCode.NOT_FOUND;
 
 /**
 * @author FQH
@@ -26,7 +25,8 @@ import java.util.stream.Collectors;
 public class CodeInfoServiceImpl extends ServiceImpl<CodeInfoMapper, CodeInfo>
     implements CodeInfoService {
 
-    private CodeInfoMapper codeInfoMapper;
+    private final CodeInfoMapper codeInfoMapper;
+
 
     @Autowired
     public CodeInfoServiceImpl(CodeInfoMapper codeInfoMapper) {
@@ -34,27 +34,43 @@ public class CodeInfoServiceImpl extends ServiceImpl<CodeInfoMapper, CodeInfo>
     }
 
     @Override
-    public List<CodeInfoVO> queryCodeInfo(CodeInfoQueryVO queryVO) {
+    public String queryCodeInfo(CodeInfoQueryVO queryVO) {
 //        var questionNo = queryVO.getQuestionNo();
 //        var questionName = queryVO.getQuestionName();
         var keyword = queryVO.getKeyword();
         var wrapper = new LambdaQueryWrapper<CodeInfo>();
         if (StringUtils.isNotBlank(keyword)) {
-            wrapper.eq(CodeInfo::getQuestionNo, keyword);
-            wrapper.like(CodeInfo::getQuestionName, keyword);
+            wrapper.eq(CodeInfo::getQuestionNo, keyword).or()
+                    .eq(CodeInfo::getQuestionName, keyword);
 //            wrapper.select();  覆盖索引优化
         }
         var codeInfoList= codeInfoMapper.selectList(wrapper);
         if (CollectionUtils.isEmpty(codeInfoList)) {
-            //TODO
-            // throw new CustomerException...
+            throw new BusinessException(NOT_FOUND.getCode(), NOT_FOUND.getMessage());
         }
-        var data = codeInfoList.stream().map(item -> {
-            var target = new CodeInfoVO();
-            BeanUtils.copyProperties(item, target);
-            return target;
-        }).collect(Collectors.toList());
-        return data;
+        return convertToMdStyle(codeInfoList);
+    }
+
+    /**
+     * 转换为md格式
+     * @param codedInfoList 代码信息数据
+     * @return List<String>
+     */
+    private String convertToMdStyle(List<CodeInfo> codedInfoList) {
+        var data = codedInfoList.get(0);
+        final StringBuilder md = new StringBuilder();
+        md.append("\uD83E\uDD16\n");
+        md.append("### ").append(data.getQuestionNo()).append(".").append(data.getQuestionName()).append("\n");
+        md.append("\uD83E\uDD23\uD83E\uDD23\uD83E\uDD23[题目链接](").append(data.getQuestionUrl()).append(")\n\n");
+        md.append("**解题思路**\n").append("```text\n").append("正在编写中\uD83E\uDD23\n").append("```\n");
+        for (var codeInfo : codedInfoList) {
+            if (codeInfo.getCodeLang() == 0) {
+                md.append("```java\n").append(codeInfo.getCode()).append("\n").append("```\n");
+            } else {
+                md.append("```go\n").append(codeInfo.getCode()).append("\n").append("```\n");
+            }
+        }
+        return md.toString();
     }
 
 }

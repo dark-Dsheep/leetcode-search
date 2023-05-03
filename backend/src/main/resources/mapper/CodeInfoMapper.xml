@@ -9,7 +9,7 @@
             <result property="questionNo" column="question_no" jdbcType="INTEGER"/>
             <result property="questionUrl" column="question_url" jdbcType="VARCHAR"/>
             <result property="codeLang" column="code_lang" jdbcType="TINYINT"/>
-            <result property="codeInfo" column="code_info" jdbcType="VARCHAR"/>
+            <result property="code" column="code" jdbcType="VARCHAR"/>
             <result property="uploadTime" column="upload_time" jdbcType="DATE"/>
             <result property="updateTime" column="update_time" jdbcType="DATE"/>
             <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>

@@ -3,7 +3,6 @@ package com.fqh.backend.controller;
 import com.fqh.backend.common.CommonResult;
 import com.fqh.backend.service.CodeInfoService;
 import com.fqh.backend.vo.CodeInfoQueryVO;
-import com.fqh.backend.vo.CodeInfoVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,10 +23,9 @@ public class CodeInfoController {
     private CodeInfoService codeInfoService;
 
     @PostMapping("/queryCodeInfo")
-    public CommonResult<List<CodeInfoVO>> queryCodeInfo(@RequestBody CodeInfoQueryVO queryVO) {
-        log.info("{}", queryVO);
-//        var data = codeInfoService.queryCodeInfo(queryVO);
-        var data = List.of(new CodeInfoVO(), new CodeInfoVO());
+    public CommonResult<String> queryCodeInfo(@RequestBody CodeInfoQueryVO queryVO) {
+        var data = codeInfoService.queryCodeInfo(queryVO);
+//        System.out.println(data);
         return ok(data);
     }
 }

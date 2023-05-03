@@ -45,8 +45,14 @@ public class CodeInfo implements Serializable {
     /**
      * 代码内容
      */
-    @TableField(value = "code_info")
-    private String codeInfo;
+    @TableField(value = "code")
+    private String code;
+
+    /**
+     * 解题思路
+     */
+    @TableField(value = "idea")
+    private String idea;
 
     /**
      * 上传时间
@@ -86,7 +92,7 @@ public class CodeInfo implements Serializable {
             && (this.getQuestionNo() == null ? other.getQuestionNo() == null : this.getQuestionNo().equals(other.getQuestionNo()))
             && (this.getQuestionUrl() == null ? other.getQuestionUrl() == null : this.getQuestionUrl().equals(other.getQuestionUrl()))
             && (this.getCodeLang() == null ? other.getCodeLang() == null : this.getCodeLang().equals(other.getCodeLang()))
-            && (this.getCodeInfo() == null ? other.getCodeInfo() == null : this.getCodeInfo().equals(other.getCodeInfo()))
+            && (this.getCode() == null ? other.getCode() == null : this.getCode().equals(other.getCode()))
             && (this.getUploadTime() == null ? other.getUploadTime() == null : this.getUploadTime().equals(other.getUploadTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
             && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()));
@@ -100,7 +106,7 @@ public class CodeInfo implements Serializable {
         result = prime * result + ((getQuestionNo() == null) ? 0 : getQuestionNo().hashCode());
         result = prime * result + ((getQuestionUrl() == null) ? 0 : getQuestionUrl().hashCode());
         result = prime * result + ((getCodeLang() == null) ? 0 : getCodeLang().hashCode());
-        result = prime * result + ((getCodeInfo() == null) ? 0 : getCodeInfo().hashCode());
+        result = prime * result + ((getCode() == null) ? 0 : getCode().hashCode());
         result = prime * result + ((getUploadTime() == null) ? 0 : getUploadTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
@@ -117,7 +123,7 @@ public class CodeInfo implements Serializable {
         sb.append(", questionNo=").append(questionNo);
         sb.append(", questionUrl=").append(questionUrl);
         sb.append(", codeLang=").append(codeLang);
-        sb.append(", codeInfo=").append(codeInfo);
+        sb.append(", codeInfo=").append(code);
         sb.append(", uploadTime=").append(uploadTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", isDeleted=").append(isDeleted);
