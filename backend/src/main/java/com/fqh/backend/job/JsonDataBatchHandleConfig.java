@@ -17,6 +17,7 @@ import org.springframework.batch.item.json.JacksonJsonObjectReader;
 import org.springframework.batch.item.json.JsonItemReader;
 import org.springframework.batch.item.json.builder.JsonItemReaderBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -31,8 +32,9 @@ import java.util.stream.Collectors;
  * json数据批处理数据处理配置
  */
 @Slf4j
-@EnableBatchProcessing
 @Configuration
+@EnableBatchProcessing
+@ConditionalOnProperty(value = "my.config.job1.enabled", havingValue = "true", matchIfMissing = true)
 public class JsonDataBatchHandleConfig {
 
     @Resource
@@ -41,7 +43,7 @@ public class JsonDataBatchHandleConfig {
     private StepBuilderFactory stepBuilderFactory;
 
     private final CodeInfoService codeInfoService;
-    private final HashSet<Integer> questionNoSet = new HashSet<>(2000);
+    private final HashSet<Integer> questionNoSet = new HashSet<>(3000);
 
     @Autowired
     public JsonDataBatchHandleConfig(CodeInfoService codeInfoService) {

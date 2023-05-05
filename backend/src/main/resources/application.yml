@@ -15,9 +15,18 @@ spring:
   batch:
     jdbc:
       initialize-schema: always # 创建SpringBatch需要的数据库表, 如果存在则不创建
+  redis:
+    host: 192.168.56.10
+    port: 6379
+    username: root
+    password: root
 
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
   mapper-locations: classpath:/mapper/*.xml
 
+my:
+  config:
+    job1:
+      enabled: true

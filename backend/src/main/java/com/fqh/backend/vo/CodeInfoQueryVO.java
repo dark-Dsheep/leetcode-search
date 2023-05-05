@@ -3,6 +3,9 @@ package com.fqh.backend.vo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotBlank;
 
 @EqualsAndHashCode
 @ToString
@@ -20,5 +23,7 @@ public class CodeInfoQueryVO {
     /**
      * 关键字
      */
+    @Length(min = 1, max = 30)
+    @NotBlank
     private String keyword;
 }
