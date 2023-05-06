@@ -1,12 +1,11 @@
 package com.fqh.backend.common;
 
-import com.fqh.backend.exception.BusinessException;
+import com.fqh.backend.common.exception.BusinessException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import static com.fqh.backend.enums.ResultCode.FAILED;
-import static com.fqh.backend.enums.ResultCode.SUCCESS;
+import static com.fqh.backend.common.enums.ResultCode.*;
 
 @Getter
 @Setter
@@ -42,6 +41,10 @@ public class CommonResult<T> {
 
     public static <T> CommonResult<T> fail(BusinessException e, T data) {
         return new CommonResult<>(e.getErrorCode(), e.getMessage(), data);
+    }
+
+    public static <T> CommonResult<T> fail(String errorMessage) {
+        return new CommonResult<>(ARGS_NOT_VALID.getCode(), ARGS_NOT_VALID.getMessage());
     }
 
 }

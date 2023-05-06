@@ -20,6 +20,21 @@ spring:
     port: 6379
     username: root
     password: root
+    database: 0
+
+    connect-timeout: 2000
+    jedis:
+      pool:
+        max-active: 50
+        max-idle: 50
+        min-idle: 0
+        max-wait: 2000
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600
+      key-prefix: myapp-
 
 mybatis-plus:
   configuration:

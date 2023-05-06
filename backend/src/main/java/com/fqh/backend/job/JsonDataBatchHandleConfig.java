@@ -86,7 +86,7 @@ public class JsonDataBatchHandleConfig {
 //                log.info("save fail");
 //        };
         return items -> {
-            log.info("{}", questionNoSet);
+//            log.info("{}", questionNoSet);
         };
     }
 

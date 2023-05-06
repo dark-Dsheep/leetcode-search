@@ -7,14 +7,14 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.fqh.backend.dao.CodeInfoMapper;
 import com.fqh.backend.entity.CodeInfo;
-import com.fqh.backend.exception.BusinessException;
+import com.fqh.backend.common.exception.BusinessException;
 import com.fqh.backend.service.CodeInfoService;
 import com.fqh.backend.vo.CodeInfoQueryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-import static com.fqh.backend.enums.ResultCode.NOT_FOUND;
+import static com.fqh.backend.common.enums.ResultCode.NOT_FOUND;
 
 /**
 * @author FQH

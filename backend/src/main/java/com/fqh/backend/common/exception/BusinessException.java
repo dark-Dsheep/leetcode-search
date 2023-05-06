@@ -1,4 +1,4 @@
-package com.fqh.backend.exception;
+package com.fqh.backend.common.exception;
 
 /**
  * 业务异常

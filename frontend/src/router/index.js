@@ -1,6 +1,7 @@
 import Home from '../views/Home.vue'
 import {createRouter, createWebHistory} from 'vue-router'
 import Test from "@/views/Test";
+import AddCodeInfo from "@/views/AddCodeInfo";
 
 const routes = [
     {
@@ -13,6 +14,13 @@ const routes = [
     {
         path: '/test',
         component: Test
+    },
+    {
+        path: '/addCodeInfo',
+        component: AddCodeInfo,
+        meta: {
+            title: '录入力扣题解'
+        }
     }
 ]
 
